@@ -1,7 +1,7 @@
 'use strict';
 // Cache only the public application shell. Firebase responses are never cached here.
 const PREFIX='dasmot-shell-'+encodeURIComponent(self.registration.scope)+'-';
-const CACHE=PREFIX+'v2-service-items';
+const CACHE=PREFIX+'v3-validation-language';
 const FILES=['./index.html','./manifest.webmanifest','./icon.svg','./icon-180.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES))));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith(PREFIX)&&key!==CACHE)await caches.delete(key);await self.clients.claim()})()));
